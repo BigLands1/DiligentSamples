@@ -82,6 +82,7 @@ add_dependencies(GhostCubeScene GhostCubePlugin-shared)
 target_include_directories(GhostCubeScene
 PRIVATE
     ../GhostCubePlugin/PluginSource/src/Unity
+    ../UnityEmulator/include
 )
 
 target_link_libraries(GhostCubeScene
