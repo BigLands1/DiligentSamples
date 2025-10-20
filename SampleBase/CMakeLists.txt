@@ -82,17 +82,27 @@ elseif(PLATFORM_LINUX)
         include/Linux/InputControllerLinux.hpp
         include/SampleApp.hpp
     )
-elseif(PLATFORM_MACOS)
 
-    set(SOURCE
-        src/MacOS/InputControllerMacOS.cpp
-        src/MacOS/SampleAppMacOS.mm
-        src/SampleApp.cpp
-    )
-    set(INCLUDE
-        Include/MacOS/InputControllerMacOS.hpp
-        include/SampleApp.hpp
-    )
+elseif(PLATFORM_MACOS)
+    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/MacOS/InputControllerMacOS.cpp")
+        set(SOURCE
+            src/MacOS/InputControllerMacOS.cpp
+            src/MacOS/SampleAppMacOS.mm
+            src/SampleApp.cpp
+        )
+        set(INCLUDE
+            Include/MacOS/InputControllerMacOS.hpp
+            include/SampleApp.hpp
+        )
+    else()
+        message(WARNING "src/MacOS/InputControllerMacOS.cpp not found, building SampleBase without MacOS-specific sources.")
+        set(SOURCE
+            src/SampleApp.cpp
+        )
+        set(INCLUDE
+            include/SampleApp.hpp
+        )
+    endif()
 
 elseif(PLATFORM_IOS)
     set(SOURCE
