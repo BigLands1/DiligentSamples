@@ -83,6 +83,7 @@ target_include_directories(GhostCubeScene
 PRIVATE
     ../GhostCubePlugin/PluginSource/src/Unity
     ../UnityEmulator/include
+    ../../DiligentCore/Graphics/GraphicsEngine/interface
 )
 
 target_link_libraries(GhostCubeScene
